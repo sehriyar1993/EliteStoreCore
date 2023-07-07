@@ -1,0 +1,95 @@
+﻿@using Elite.EntityLayer.Concreate;
+@model Product
+@{
+    ViewData["Title"] = "UpdateProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h1>Yenilə</h1>
+                <form method="post">
+                    <input type="hidden" asp-for="ProductId" class="form-control" />
+
+                    <div class="form-group">
+                        @Html.Label("Kateqoriya Seçimi")
+                        @Html.DropDownListFor(x=>x.CategoryId,(List<SelectListItem>)ViewBag.v1,new {@class="form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Material")
+                        @Html.DropDownListFor(x=>x.MaterialId,(List<SelectListItem>)ViewBag.material,new {@class="form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Still")
+                        @Html.DropDownListFor(x=>x.StillId,(List<SelectListItem>)ViewBag.still,new {@class="form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Rəngi")
+                        @Html.DropDownListFor(x=>x.ColorId,(List<SelectListItem>)ViewBag.color,new {@class="form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Adı və Markası")
+                        <input type="text" asp-for="ProductName" class="form-control" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @Html.Label("Alış Qiyməti")
+                        <input type="text" asp-for="ProductPrice" class="form-control" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @Html.Label("Ölçü")
+                        <input type="text" asp-for="ProductSize" class="form-control" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @Html.Label("Endirimli Qiyməti")
+                        <input type="text" asp-for="DiscountedPrice" class="form-control" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @Html.Label("Qiymət")
+                        <input type="text" asp-for="CellPrice" class="form-control" />
+                    </div>
+
+                    <br />
+                    <div class="form-group">
+                        @Html.Label("Stock Sayı")
+                        <input type="text" asp-for="ProductSock" class="form-control" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @Html.Label("Şəkil")
+                        <input type="text" asp-for="ProductImage1" class="form-control" />
+                        <input type="text" asp-for="ProductImage2" class="form-control" />
+                        <input type="text" asp-for="ProductImage3" class="form-control" />
+                        <input type="text" asp-for="ProductImage4" class="form-control" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @Html.Label("Cinsiyyət")
+                        <input type="text" asp-for="ProductGender" class="form-control" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @Html.Label("Haqqında")
+                        <textarea cols="30" rows="5" class="form-control" asp-for="ProductAbout"></textarea>
+                    </div>
+                    <br />
+                    <button type="submit" id="btn1" class="btn btn-primary submit mb-4">Təsdiqlə</button>
+
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

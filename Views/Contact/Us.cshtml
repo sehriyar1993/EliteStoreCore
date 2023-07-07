@@ -1,0 +1,75 @@
+﻿@model MailRequestAdmin
+
+@{
+    ViewData["Title"] = "Us";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<div class="fh-breadcrumb">
+    @await Component.InvokeAsync("ContactUs")
+
+    <div class="full-height">
+        <div class="full-height-scroll white-bg border-left">
+
+            <div class="element-detail-box">
+
+                <div class="tab-content">
+                    <div class="mail-box-header">
+
+                        <h2>
+                            Bizimlə Əlaqəyə Cavab
+                        </h2>
+                    </div>
+                    <div class="mail-box">
+
+
+                        <div class="mail-body">
+
+                            <form method="post">
+
+                                <div class="form-group">
+                                    @Html.Label("Qəbul Edən Mail Adresi")
+                                    @Html.DropDownListFor(x=>x.ReceiverMail,(IEnumerable<SelectListItem>)ViewBag.v1,new {@class="form-control"} )
+                                </div>
+                                <br />
+
+                                <div class="form-group">
+                                    @Html.Label("Başlıq")
+                                    @Html.TextBoxFor(x=>x.Subject, new {@class ="form-control"})
+                                </div>
+                                <br />
+
+                                <div class="form-group">
+                                    @Html.Label("Mesaj ")
+                                    @Html.TextAreaFor(x=>x.Body, 15, 5,   new { @class ="form-control"})
+                                </div>
+                                <br />
+
+                                <button class="btn btn-outline-primary">Mail Göndər</button>
+                            </form>
+
+
+                        </div>
+
+
+
+                        <div class="clearfix"></div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+

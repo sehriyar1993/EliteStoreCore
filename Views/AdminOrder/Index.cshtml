@@ -1,0 +1,62 @@
+﻿@using Elite.EntityLayer.Concreate;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Mvc.Core.Common;
+@model IPagedList<Order>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    @foreach(var x in Model)
+    {
+        <div class="col-lg-4">
+            <div class="contact-box">
+                <div class="row" >
+                    <div class="col-4">
+                        <div class="text-center">
+                            <img alt="image" class="rounded-circle m-t-xs img-fluid" src="@x.ProductImage1">
+                            <div class="m-t-xs font-bold">@x.Status</div>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <h3><strong>Id:@x.OrderId @x.ProductName</strong></h3>
+                        <p><i class="fa fa-map-marker"></i> @(((DateTime)x.Date).ToString("dd-MMM-yyyy"))</p>
+                        <address>
+                            <strong>Ölçü: @x.ProductSize , @x.ProductGender</strong><br>
+                            @x.AppUser.Name @x.AppUser.Surname<br>
+                            @x.AppUser.Adress<br>
+                            <abbr title="Phone">Telefon:</abbr> @x.AppUser.PhoneNumber
+                        </address>
+                        @if (x.Status == "Təsdiqləndi")
+                        {
+                            <p><a href="/AdminOrder/ChangeToFalse/@x.OrderId" class="btn btn-outline-info">Statusu Dəyiş</a></p>
+
+                        }
+                        else
+                        {
+                            <p><a href="/AdminOrder/ChangeToTrue/@x.OrderId" typeof="" class="btn btn-outline-warning">Statusu Dəyiş</a></p>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }),
+    new PagedListRenderOptions
+    {
+    LinkToFirstPageFormat="<<İlk",
+    LinkToLastPageFormat="Son>>",
+    LinkToNextPageFormat="sonraki>",
+    LinkToPreviousPageFormat="<əvvəli",
+    ContainerDivClasses=new[] {"navigation"},
+    LiElementClasses= new[] {"page-item"},
+    PageClasses=new[] {"page-link"},
+    ActiveLiElementClass="active"
+    })
+</div>
+
+

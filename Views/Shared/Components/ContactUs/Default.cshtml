@@ -1,0 +1,27 @@
+﻿@using Elite.EntityLayer.Concreate;
+@model List<Contact>
+<div class="fh-column">
+    <div class="full-height-scroll">
+        <ul class="list-group elements-list">
+            @foreach (var x in Model)
+            {
+                <li class="list-group-item">
+                  
+                <a class="nav-link active" data-toggle="tab" href="#tab-1">
+                        <small class="float-right text-muted"> @(((DateTime)x.Date).ToString("dd-MMM-yyyy"))</small>
+                    <strong>@x.Name -- @x.Phone</strong>
+                    <div class="small m-t-xs">
+                        <p>
+                            @x.Description
+                        </p>
+                        <p class="m-b-none">
+                            <i class="fa fa-map-marker"></i> @x.Mail
+                        </p>
+                    </div>
+                </a>
+                </li>
+            }
+        </ul>
+
+    </div>
+</div>

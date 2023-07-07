@@ -1,0 +1,311 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | File Upload</title>
+
+    <link href="~/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/admin/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/admin/css/animate.css" rel="stylesheet">
+    <link href="~/admin/css/plugins/dropzone/basic.css" rel="stylesheet">
+    <link href="~/admin/css/plugins/dropzone/dropzone.css" rel="stylesheet">
+    <link href="~/admin/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="~/admin/css/plugins/codemirror/codemirror.css" rel="stylesheet">
+    <link href="~/admin/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        @await Component.InvokeAsync("AppuserAdminNAv")
+
+                       
+                        <div class="logo-element">
+                            IN+
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/DashBoard/Index"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span></a>
+                      
+                    </li>
+                    <li class="landing_link">
+                        <a target="_blank" href="/AdminPruduct/Index/"><i class="fa fa-star"></i> <span class="nav-label">Bütün Məhsullar</span> <span class="label label-warning float-right"></span></a>
+                    </li>
+                    <li>
+                        <a href="/AdminPruduct/AddProduct"><i class="fa fa-database"></i> <span class="nav-label">Yeni Məhsul Əlavə Et</span></a>
+                    </li>
+                    <li>
+                        <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mesaj Qutusu </span><span class="label label-warning float-right"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/Contact/AdminNewsletter">Mail Blüteninə Cavab</a></li>
+                            <li><a href="/Contact/Us">Əlaqəyə Cavab</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Məhsul Xüsusiyyətləri</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li class="active"><a href="/AdminCategory/Index"> Kateqorialar</a></li>
+                            <li><a href="/AdminPruduct/Color/">Rənglər</a></li>
+                            <li><a href="/AdminPruduct/Still/">Stillər</a></li>
+                            <li><a href="/AdminPruduct/Material/">Materiallar</a></li>
+                        
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/AdminOrder/Index"><i class="fa fa-dropbox"></i> <span class="nav-label">Sifarişlər</span>  </a>
+                    </li>
+                    <li >
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Məhsullar Kişi</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/AdminPruduct/PruductListMan/">Hamısı</a></li>
+                            @await Component.InvokeAsync("CategoryListMenAdmin")
+                        </ul>
+                    </li>
+                   
+                    <li>
+                        <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Məhsullar Qadın</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/AdminPruduct/PruductListWoman/">Hamısı</a></li>
+                            @await Component.InvokeAsync("CategoryListWomanAdmin")
+
+                          
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/Contact/AdminContact"><i class="fa fa-weixin"></i> <span class="nav-label">Əlaqə</span>  </a>
+                    </li>
+                
+                    <li>
+                        <a href="/Profile/Index"><i class="fa fa-picture-o"></i> <span class="nav-label">Profilim</span></a>
+                    </li>
+                 
+                    <li>
+                        <a href="/Client/Index"><i class="fa fa-user-o"></i> <span class="nav-label">İstifadəçilər</span></a>
+                    </li>
+                    
+                    <li>
+                        <a href="/About/AdminIndex"><i class="fa fa-list"></i> <span class="nav-label">Haqqımızda</span></a>
+                    </li>
+                    <li>
+                        <a href="/AdminRole/Index"><i class="fa fa-magic"></i> <span class="nav-label">Rollar </span><span class="label label-info float-right"></span></a>
+                    </li>
+                    <li class="landing_link">
+                        <a target="_blank" href="/Home/Index/"><i class="fa fa-deskpro"></i> <span class="nav-label">Səhifəyə Keç</span></a>
+                    </li>
+                    <li>
+                        <a href="/User/SignOut"><i class="fa fa-sign-out"></i> <span class="nav-label">Çıxış</span>  </a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+        
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                        <form role="search" class="navbar-form-custom" action="search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="Axtar..." class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message">Admin Səhifəsinə Xoş Gəldiniz.</span>
+                        </li>
+                        @*<li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a class="dropdown-item float-left" href="profile.html">
+                                            <img alt="image" class="rounded-circle" src="img/a7.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                            <small class="float-right">46h ago</small>
+                                            <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a class="dropdown-item float-left" href="profile.html">
+                                            <img alt="image" class="rounded-circle" src="img/a4.jpg">
+                                        </a>
+                                        <div class="media-body ">
+                                            <small class="float-right text-navy">5h ago</small>
+                                            <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                            <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a class="dropdown-item float-left" href="profile.html">
+                                            <img alt="image" class="rounded-circle" src="img/profile.jpg">
+                                        </a>
+                                        <div class="media-body ">
+                                            <small class="float-right">23h ago</small>
+                                            <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                            <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <div class="text-center link-block">
+                                        <a href="mailbox.html" class="dropdown-item">
+                                            <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <a href="mailbox.html" class="dropdown-item">
+                                        <div>
+                                            <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                            <span class="float-right text-muted small">4 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <a href="profile.html" class="dropdown-item">
+                                        <div>
+                                            <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                            <span class="float-right text-muted small">12 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <a href="grid_options.html" class="dropdown-item">
+                                        <div>
+                                            <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                            <span class="float-right text-muted small">4 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <div class="text-center link-block">
+                                        <a href="notifications.html" class="dropdown-item">
+                                            <strong>See All Alerts</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+*@
+                        <li>
+                            <a href="/User/SignOut">
+                                <i class="fa fa-sign-out"></i> Çıxış
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+          @RenderBody()
+            <div class="footer">
+               
+                <div>
+                    <strong> Desing By--<a href="https://shahriyarhajiyev.com/">Şəhriyar Hacıyev</a></strong>  &copy; @DateTime.Now.Year .
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Mainly scripts -->
+    <script src="~/admin/js/jquery-3.1.1.min.js"></script>
+    <script src="~/admin/js/popper.min.js"></script>
+    <script src="~/admin/js/bootstrap.js"></script>
+    <script src="~/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="~/admin/js/inspinia.js"></script>
+    <script src="~/admin/js/plugins/pace/pace.min.js"></script>
+
+    <!-- Jasny -->
+    <script src="~/admin/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+
+    <!-- DROPZONE -->
+    <script src="~/admin/js/plugins/dropzone/dropzone.js"></script>
+
+    <!-- CodeMirror -->
+    <script src="~/admin/js/plugins/codemirror/codemirror.js"></script>
+    <script src="~/admin/js/plugins/codemirror/mode/xml/xml.js"></script>
+
+
+    <script>
+        Dropzone.options.dropzoneForm = {
+            paramName: "file", // The name that will be used to transfer the file
+            maxFilesize: 2, // MB
+            dictDefaultMessage: "<strong>Drop files here or click to upload. </strong></br> (This is just a demo dropzone. Selected files are not actually uploaded.)"
+        };
+
+        $(document).ready(function () {
+
+            var editor_one = CodeMirror.fromTextArea(document.getElementById("code1"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+            var editor_two = CodeMirror.fromTextArea(document.getElementById("code2"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+            var editor_two = CodeMirror.fromTextArea(document.getElementById("code3"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+            var editor_two = CodeMirror.fromTextArea(document.getElementById("code4"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+
+            $('.custom-file-input').on('change', function () {
+                let fileName = $(this).val().split('\\').pop();
+                $(this).next('.custom-file-label').addClass("selected").html(fileName);
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

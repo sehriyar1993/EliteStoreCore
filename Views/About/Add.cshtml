@@ -1,0 +1,61 @@
+﻿@using Elite.EntityLayer.Concreate;
+@model About
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-9">
+        <h2>Haqqında Əlavə Et</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">İdarəetmə</a>
+            </li>
+            <li class="breadcrumb-item">
+                Haqqında
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Haqqında Əlavə Et</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<br/>
+<br/>
+ <div class="ibox-content">
+	@using (Html.BeginForm("Add", "About", FormMethod.Post))
+	{
+
+		<br />
+		<label for="validationCustom01">Başlıq 1</label>
+		@Html.TextBoxFor(x=>x.Title, new {@class ="form-control"})
+        <br />
+        <br />
+        <label for="validationCustom01">Başlıq 2</label>
+        @Html.TextBoxFor(x=>x.Title2, new {@class ="form-control"})
+        <br />
+         <br />
+        <label for="validationCustom01">Şəkil 1</label>
+        @Html.TextBoxFor(x=>x.Image1, new {@class ="form-control"})
+         <br />
+        <label for="validationCustom01">Şəkil 2</label>
+        @Html.TextBoxFor(x=>x.Image2, new {@class ="form-control"})
+         <br />
+        <label for="validationCustom01">Şəkil 3</label>
+        @Html.TextBoxFor(x=>x.Image3, new {@class ="form-control"})
+        <br />
+		<label for="validationCustom02">Haqqında 1</label>
+		@Html.TextAreaFor(x=>x.Description, 5, 2,   new { @class ="form-control"})
+		<br />
+        <label for="validationCustom02">Haqqında 2</label>
+        @Html.TextAreaFor(x=>x.Description2, 5, 2,   new { @class ="form-control"})
+        <br />
+
+		<button type="submit" id="btn1" class="btn btn-primary submit mb-4">Təsdiqlə</button>
+
+	}
+
+ </div>
+
+

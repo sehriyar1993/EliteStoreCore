@@ -1,0 +1,246 @@
+﻿@model Elite.EntityLayer.Concreate.Product
+
+@{
+    ViewData["Title"] = "ProductSıngle";
+    Layout = "~/Views/Shared/_EliteLayout.cshtml";
+}
+<div class="banner-bootom-w3-agileits">
+	<div class="container">
+		<div class="col-md-4 single-right-left ">
+			<div class="grid images_3_of_2">
+				<div class="flexslider">
+
+					<ul class="slides">
+						<li data-thumb="@Model.ProductImage1">
+							<div class="thumb-image"> <img src="@Model.ProductImage1" data-imagezoom="true" class="img-responsive"> </div>
+						</li>
+						<li data-thumb="@Model.ProductImage2">
+							<div class="thumb-image"> <img src="@Model.ProductImage2" data-imagezoom="true" class="img-responsive"> </div>
+						</li>
+						<li data-thumb="@Model.ProductImage3">
+							<div class="thumb-image"> <img src="@Model.ProductImage3" data-imagezoom="true" class="img-responsive"> </div>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8 single-right-left simpleCart_shelfItem">
+			<h3>@Model.ProductName</h3>
+			<p><span class="item_price">@Model.DiscountedPrice AZN</span> <del>- @Model.CellPrice AZN</del></p>
+			<div class="color-quality">
+				<div class="color-quality-right">
+					<h5>Stock : @Model.ProductSock</h5>
+				@*	<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
+						<option value="null">5 Qty</option>
+						<option value="null">6 Qty</option>
+						<option value="null">7 Qty</option>
+						<option value="null">10 Qty</option>
+					</select>*@
+				</div>
+			</div>
+			<div class="occasional">
+				<h5>Cinsiyyət : @Model.ProductGender</h5>
+				<div class="colr ert">
+					<label class="radio"><p class="form-control-static"></p>@Model.Category.CategoryName</label>
+				</div>
+				<div class="colr">
+					<label class="radio"><p class="form-control-static"></p>@Model.Material.MaterialName</label>
+				</div>
+				<div class="colr">
+					<label class="radio"><p class="form-control-static"></p>@Model.Still.StillName</label>
+				</div>
+				<div class="colr">
+					<label class="radio"><p class="form-control-static"></p>@Model.Color.ColorName</label>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="occasion-cart">
+				<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+					<form action="/Product/BuyProduct/" method="post">
+						<fieldset>
+							<input type="hidden" name="AppUserId" value="@ViewBag.userID">
+							<input type="hidden" name="ProductName" value="@Model.ProductName">
+							<input type="hidden" name="ProductGender" value="@Model.ProductGender ">
+							<input type="hidden" name="DiscountedPrice" value="@Model.DiscountedPrice">
+							<input type="hidden" name="ProductSize" value="@Model.ProductSize">
+							<input type="hidden" name="ProductId" value="@Model.ProductId">
+							<input type="hidden" name="ProductImage1" value="@Model.ProductImage1">
+							<input type="submit" class="button" value="Səbətə At">
+						</fieldset>
+					</form>
+				</div>
+
+			</div>
+			<ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
+				<li class="share">Paylaşın : </li>
+				<li>
+					<a href="#" class="facebook">
+						<div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+						<div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="twitter">
+						<div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+						<div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="instagram">
+						<div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+						<div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="pinterest">
+						<div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+						<div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+					</a>
+				</li>
+			</ul>
+
+		</div>
+		<div class="clearfix"> </div>
+		<!-- /new_arrivals -->
+		<div class="responsive_tabs_agileits">
+			<div id="horizontalTab">
+				<div class="resp-tabs-container">
+					<!--/tab_one-->
+					
+					<!--//tab_one-->
+					<div class="tab2">
+
+						<div class="single_page_agile_its_w3ls">
+							<div class="bootstrap-tab-text-grids">
+								<div class="bootstrap-tab-text-grid">
+									<div class="bootstrap-tab-text-grid-left">
+										<img src="https://i.hizliresim.com/1bgi7ii.jpg" alt=" " class="img-responsive">
+									</div>
+									<div class="bootstrap-tab-text-grid-right">
+										<ul>
+											<li><a href="#">Admin</a></li>
+											<li><a href="#"><i class="fa fa-reply-all" aria-hidden="true"></i> Cavabla</a></li>
+										</ul>
+										<p>
+										@Model.ProductAbout
+										</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+								<div class="add-review">
+									<h4>Məhsulla bağlı fikriniz vəya satın almaq üçün adminə yazın</h4>
+									<form action="/Contact/Index/" method="post">
+										<input type="text" name="Name" required="Name" placeholder="Adınız" class="form-control">
+										<input type="text" name="Phone" required="Phone" placeholder="Mobil Nömrəniz" class="form-control">
+										<input type="hidden" name="Title" value="@Model.ProductName , Məhsulun İDsi @Model.ProductId , @Model.ProductPrice AZN" class="form-control">
+										<input type="email" name="Mail" required="Email" placeholder="Mail Ünvanınız" class="form-control">
+										<textarea name="Description" required="" placeholder="Mesajınız"></textarea>
+										<input type="submit" value="Göndər">
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //new_arrivals -->
+		<!--/slider_owl-->
+		@await Component.InvokeAsync("ProductFour")
+
+	</div>
+</div>
+
+<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- js -->
+<script type="~/web/text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<script src="~/web/js/modernizr.custom.js"></script>
+<!-- Custom-JavaScript-File-Links -->
+<!-- cart-js -->
+<script src="~/web/js/minicart.min.js"></script>
+<script>
+	// Mini Cart
+	paypal.minicart.render({
+		action: '#'
+	});
+
+	if (~window.location.search.indexOf('reset=true')) {
+		paypal.minicart.reset();
+	}
+</script>
+
+<!-- //cart-js -->
+<!-- single -->
+<script src="~/web/js/imagezoom.js"></script>
+<!-- single -->
+<!-- script for responsive tabs -->
+<script src="~/web/js/easy-responsive-tabs.js"></script>
+<script>
+	$(document).ready(function () {
+		$('#horizontalTab').easyResponsiveTabs({
+			type: 'default', //Types: default, vertical, accordion
+			width: 'auto', //auto or any width like 600px
+			fit: true,   // 100% fit in a container
+			closed: 'accordion', // Start closed if in accordion view
+			activate: function (event) { // Callback function if tab is switched
+				var $tab = $(this);
+				var $info = $('#tabInfo');
+				var $name = $('span', $info);
+				$name.text($tab.text());
+				$info.show();
+			}
+		});
+		$('#verticalTab').easyResponsiveTabs({
+			type: 'vertical',
+			width: 'auto',
+			fit: true
+		});
+	});
+</script>
+<!-- FlexSlider -->
+<script src="~/web/js/jquery.flexslider.js"></script>
+<script>
+	// Can also be used with $(document).ready()
+	$(window).load(function () {
+		$('.flexslider').flexslider({
+			animation: "slide",
+			controlNav: "thumbnails"
+		});
+	});
+</script>
+<!-- //FlexSlider-->
+<!-- //script for responsive tabs -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="~/web/js/move-top.js"></script>
+<script type="text/javascript" src="~/web/js/jquery.easing.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function ($) {
+		$(".scroll").click(function (event) {
+			event.preventDefault();
+			$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+		});
+	});
+</script>
+<!-- here stars scrolling icon -->
+<script type="text/javascript">
+	$(document).ready(function () {
+		/*
+			var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear'
+			};
+		*/
+
+		$().UItoTop({ easingType: 'easeOutQuart' });
+
+	});
+</script>
+<!-- //here ends scrolling icon -->
+<!-- for bootstrap working -->
+<script type="text/javascript" src="~/web/js/bootstrap.js"></script>
+

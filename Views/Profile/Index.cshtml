@@ -1,0 +1,166 @@
+﻿@model UserEditViewModel
+@{
+    ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="wrapper wrapper-content animated fadeInRight">
+  
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox product-detail">
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="product-images">
+                                    <img src="@Model.imageurl" />
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <h2 class="font-bold m-b-xs">
+                                @Model.name @Model.surname
+                            </h2>
+                                <small>@Model.phonenumber</small>
+                                <hr>
+                                <h4>@Model.adress</h4>
+                                <div class="small text-muted">
+                                    @Model.about
+                                </div>
+                                <hr>
+                                <div class="attachment">
+
+                                 @*   <div class="file-box">
+                                        <div class="file">
+                                            <a href="#">
+                                                <span class="corner"></span>
+
+                                                <div class="image">
+                                                    <img alt="image" class="img-fluid" src="@m.Image2">
+                                                </div>
+                                                <div class="file-name">
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="file-box">
+                                        <div class="file">
+                                            <a href="#">
+                                                <span class="corner"></span>
+
+                                                <div class="image">
+                                                    <img alt="image" class="img-fluid" src="@m.Image3">
+                                                </div>
+                                                <div class="file-name">
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>*@
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div>
+                                    <div class="btn-group">
+                                        <a href="/About/Delete/" class="btn btn-white btn-sm"><i class="fa fa-archive"></i>Sil</a>
+                                        <a href="/About/Update/" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i>Yenilə</a>
+                                        @*@if (Model.phonenumber == true)
+                                        {
+                                            <a href="/About/ChangeToFalse/" class="btn btn-white btn-sm"><i class="fa fa-check-square-o "> </i>Passiv et</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/About/ChangeToTrue/" class="btn btn-white btn-sm"><i class="fa fa-check-square "> </i>Aktiv et</a>
+                                        }*@
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+                        <div class="row">
+            </div>
+        <div class="col-lg-12">
+            <div class="ibox ">
+              
+                <div class="ibox-content">
+                    <form method="get">
+                        <div class="form-group  row">
+                            <label class="col-sm-2 col-form-label">Ad</label>
+
+                            <div class="col-sm-10"><input type="text" class="form-control" asp-for="name"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">İstifadəçi Adı</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" asp-for="username">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Şifrə</label>
+
+                            <div class="col-sm-10"><input type="password" class="form-control" asp-for="password"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Şifrə Təkrar</label>
+
+                            <div class="col-sm-10"><input type="text"  class="form-control" asp-for="confirmpassword"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 col-form-label">Şəkil linki</label>
+
+                            <div class="col-lg-10"><input type="text" asp-for="imageurl" class="form-control"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 col-form-label">Haqqımda</label>
+
+                            <div class="col-lg-10"><input type="text" asp-for="about" class="form-control"></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 col-form-label">Nömrə</label>
+
+                            <div class="col-lg-10"><input type="text" asp-for="phonenumber" class="form-control"></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 col-form-label">Şəhər</label>
+
+                            <div class="col-lg-10"><input type="text" asp-for="city" class="form-control"></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 col-form-label">Ünvan </label>
+
+                            <div class="col-lg-10"><input type="text" asp-for="adress" class="form-control"></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 col-form-label">Cinsiyyət</label>
+
+                            <div class="col-lg-10"><input type="text" asp-for="gender" class="form-control" value="Kişi" ></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 col-form-label">Email</label>
+
+                            <div class="col-lg-10"><input type="email" asp-for="mail" class="form-control"></div>
+                        </div>
+                        <div class="hr-line-dashed">
+                        </div>
+                        <button type="submit" id="btn1" class="btn btn-gradient-primary mr-2">Təsdiqlə</button>
+                        <button asp-action="Index" asp-controller="DashBoard" class="btn btn-light">Ləğv Et</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    
+</div>
+
+
+
+

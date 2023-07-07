@@ -1,0 +1,78 @@
+﻿@using Elite.EntityLayer.Concreate;
+@using X.PagedList.Mvc.Core.Common;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core
+@model IPagedList<Still>
+@{
+    ViewData["Title"] = "Still";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-9">
+        <h2>Stilllər</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Ana Səhifə</a>
+            </li>
+            <li class="breadcrumb-item">
+                İdarəetmə
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Stilllər</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <ul class="notes">
+                @foreach (var x in Model)
+                {
+                    <li>
+                        <div>
+                            <small>
+                                <a href="/AdminPruduct/StillUpdate/@x.StillId" class="fa fa-retweet">Yenilə</a>
+                            </small>
+                            <small> Statusu:@x.Status</small>
+                            <h4>@x.StillId -> @x.StillName</h4>
+                            @*                            <p>@x.CategoryDescription</p>
+                        *@                            @{
+                                if (x.Status == true)
+                                {
+                                    <a href="/AdminPruduct/ChangeToFalseStill/@x.StillId"><i class="fa fa-power-off "> Passiv et</i></a>
+                                }
+                                else
+                                {
+                                    <a href="/AdminPruduct/ChangeToTrueStill/@x.StillId"><i class="fa fa-superpowers "> Aktiv et</i></a>
+
+                                }
+                            }
+
+                        </div>
+                    </li>
+
+                }
+            </ul>
+        </div>
+
+    </div>
+
+    @Html.PagedListPager(Model,
+    page => Url.Action("Still", new { page }),
+    new PagedListRenderOptions {
+    DisplayLinkToIndividualPages = true,
+    DisplayPageCountAndCurrentLocation = false,
+    MaximumPageNumbersToDisplay = 10,
+    LiElementClasses = new string[] { "page-item" },
+    PageClasses = new string[] { "page-link" },
+    })
+</div>
+<br />
+<a href="/AdminPruduct/StillAdd" class="btn btn-outline-primary">Yeni Still</a>
+
+
+
+
+

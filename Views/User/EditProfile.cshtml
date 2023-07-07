@@ -1,0 +1,128 @@
+﻿@model AppUserImage
+
+@{
+    ViewData["Title"] = "EditProfile";
+    Layout = "~/Views/Shared/_EliteLayout.cshtml";
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<div class="page-head_agile_info_w3l">
+	<div class="container">
+		<h3>Pro<span>FİLİM </span></h3>
+		<!--/w3_short-->
+		<div class="services-breadcrumb">
+			<div class="agile_inner_breadcrumb">
+
+				<ul class="w3_short">
+					<li><a href="index.html">Ana Səhifə</a><i>|</i></li>
+					<li>Profilim</li>
+				</ul>
+			</div>
+		</div>
+		<!--//w3_short-->
+	</div>
+</div>
+<!--/contact-->
+<div class="banner_bottom_agile_info">
+	<div class="container">
+		@*<div class="contact-grid-agile-w3s">
+
+			<div class="col-md-12 w3-agileits">
+				<div class="community-poll">
+					<h4>Profilim</h4>
+					<div class="swit form">
+						<a href="#" class="list-group-item"><span class="badge">201</span> <i class="ti ti-email"></i> Gələn Mesajlar </a>
+						<a href="#" class="list-group-item"><span class="badge badge-primary">5021</span> <i class="ti ti-eye"></i> Gedən MEsajlar</a>
+						<a href="#" class="list-group-item"><span class="badge">14</span> <i class="ti ti-headphone-alt"></i> Sifarişlərim </a>
+						<a href="#" class="list-group-item"><span class="badge">20</span> <i class="ti ti-comments"></i> Təsdiqlənmiş Sifarişlərim </a>
+						<a href="#" class="list-group-item"><span class="badge badge-warning">14</span> <i class="ti ti-bookmark"></i> Adres Məlumatlarım </a>
+						<a href="#" class="list-group-item"><span class="badge badge-danger">30</span> <i class="ti ti-bell"></i> Şifrə Dəyişdirmə </a>
+					</div>
+				</div>
+			</div>*@
+		</div>
+        <div class="col-sm-12 men-wear-right">
+
+        <div class="col-md-12 contact-form">
+                <div class="col-sm-12 men-wear-left">
+
+        <form class="forms-group method="post" asp-action="EditProfile" asp-asp-controller="Writer" enctype="multipart/form-data">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                                <h4 class="white-w3ls">Profil <span>Yeniləmə</span></h4>
+
+                        <div class="forms-sample">
+                            @Html.HiddenFor(x=>x.Id, new {@class ="form-control"})
+                       
+                            <div class="form-group">
+                                <label for="exampleInputName1">İstifadəçi Adı</label>
+                                @Html.TextBoxFor(x=>x.username, new {@class ="form-control"})
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Ad</label>
+                                @Html.TextBoxFor(x=>x.name, new {@class ="form-control"})
+
+                            </div>    <div class="form-group">
+                                <label for="exampleInputName1">Soyad</label>
+                                @Html.TextBoxFor(x=>x.surname, new {@class ="form-control"})
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail3">Mail adresi</label>
+                                @Html.TextBoxFor(x=>x.mail, new {@class ="form-control"})
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword4">Telefon</label>
+                                @Html.TextBoxFor(x=>x.phonenumber, new { @class ="form-control"})
+                            </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">Şəhər</label>
+                                        @Html.TextBoxFor(x=>x.city, new {@class ="form-control"})
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleTextarea1">Ünvan</label>
+                                        @Html.TextAreaFor(x=>x.adress, 5, 2,   new { @class ="form-control"})
+                                    </div>
+                            <div class="form-group">
+                                <label for="exampleTextarea1">Haqqında</label>
+                                @Html.TextAreaFor(x=>x.about, 5, 2,   new { @class ="form-control"})
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Şəkil Yüklə URL</label>
+                                @Html.TextBoxFor(x=>x.imageurl, new {@class ="form-control"})
+
+                            </div>
+                           
+                            <div class="form-group">
+                                <label for="exampleInputPassword4">Yeni Şifrə</label>
+                                @Html.PasswordFor(x=>x.password, new { @class ="form-control"})
+                            </div>
+
+                            <button type="submit" id="btn1" class="btn btn-gradient-primary mr-2">Təsdiqlə</button>
+                            <button asp-action="Index" asp-controller="DashBoard" class="btn btn-light">Ləğv Et</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+	</div>
+	</div>
+	</div>
+	</div>
+</div>
+<script>
+    $('#btn1').click(function () {
+        Swal.fire('Dəyişikliklər Əlavə Edildi');
+    });
+</script>
+<script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.11/dist/sweetalert2.all.min.js
+"></script>
+<link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.11/dist/sweetalert2.min.css
+" rel="stylesheet">

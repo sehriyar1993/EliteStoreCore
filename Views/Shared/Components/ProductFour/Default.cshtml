@@ -1,0 +1,50 @@
+﻿@using Elite.EntityLayer.Concreate;
+@model List<Product>
+
+<div class="w3_agile_latest_arrivals">
+	<h3 class="wthree_text_info">Featured <span>Arrivals</span></h3>
+	@foreach (var item in Model.OrderByDescending(x=>x.ProductId).Take(4))
+	{
+		<div class="col-md-3 product-men">
+			<div class="men-pro-item simpleCart_shelfItem">
+
+				<div class="men-thumb-item">
+					<img src="@item.ProductImage1" alt="" class="pro-image-front">
+					<img src="@item.ProductImage1" alt="" class="pro-image-back">
+					<div class="men-cart-pro">
+						<div class="inner-men-cart-pro">
+							<a href="single.html" class="link-product-add-cart">Sürətli Bax</a>
+						</div>
+					</div>
+					<span class="product-new-top">@item.ProductGender, Ölçü:@item.ProductSize </span>
+
+				</div>
+				<div class="item-info-product ">
+					<h4><a href="#">@item.ProductName</a></h4>
+					<div class="info-product-price">
+						<span class="item_price">@item.DiscountedPrice AZN</span>
+						<del>@item.CellPrice AZN</del>
+					</div>
+					<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+						<form action="/Product/BuyProduct/" method="post">
+							<fieldset>
+								<input type="hidden" name="AppUserId" value="@ViewBag.userID">
+								<input type="hidden" name="ProductName" value="@item.ProductName">
+								<input type="hidden" name="ProductGender" value="@item.ProductGender ">
+								<input type="hidden" name="DiscountedPrice" value="@item.DiscountedPrice">
+								<input type="hidden" name="ProductSize" value="@item.ProductSize">
+								<input type="hidden" name="ProductId" value="@item.ProductId">
+								<input type="hidden" name="ProductImage1" value="@item.ProductImage1">
+								<input type="submit" class="button" value="Səbətə At">
+							</fieldset>
+						</form>
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+	}	<div class="clearfix"> </div>
+	<!--//slider_owl-->
+</div>

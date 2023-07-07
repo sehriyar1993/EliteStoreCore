@@ -1,0 +1,90 @@
+﻿@using Elite.EntityLayer.Concreate;
+@model List<About>
+@{
+    ViewData["Title"] = "AdminIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="wrapper wrapper-content animated fadeInRight">
+    @foreach(var m in Model)
+    {
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox product-detail">
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="product-images">
+                                  <img src="@m.Image1" />
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <h2 class="font-bold m-b-xs">
+                                    @m.Title
+                                </h2>
+                                <small>@m.Description</small>
+                                <hr>
+                                <h4>@m.Title2</h4>
+                                <div class="small text-muted">
+                                   @m.Description2
+                                </div>
+                                <hr>
+                                <div class="attachment">
+                                  
+                                    <div class="file-box">
+                                        <div class="file">
+                                            <a href="#">
+                                                <span class="corner"></span>
+
+                                                <div class="image">
+                                                    <img alt="image" class="img-fluid" src="@m.Image2" >
+                                                </div>
+                                                <div class="file-name">
+                                                
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="file-box">
+                                        <div class="file">
+                                            <a href="#">
+                                                <span class="corner"></span>
+
+                                                <div class="image">
+                                                    <img alt="image" class="img-fluid" src="@m.Image3" >
+                                                </div>
+                                                <div class="file-name">
+                                           
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div>
+                                    <div class="btn-group">
+                                        <a href="/About/Add/" class="btn btn-primary btn-sm"><i class="fa fa-cart-plus"></i>Yeni</a>
+                                        <a href="/About/Delete/@m.AboutID" class="btn btn-white btn-sm"><i class="fa fa-archive"></i>Sil</a>
+                                        <a href="/About/Update/@m.AboutID" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i>Yenilə</a>
+                                        @if (m.Status == true)
+                                        {
+                                            <a href="/About/ChangeToFalse/@m.AboutID" class="btn btn-white btn-sm"><i class="fa fa-check-square-o "> </i>Passiv et</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/About/ChangeToTrue/@m.AboutID" class="btn btn-white btn-sm"><i class="fa fa-check-square "> </i>Aktiv et</a>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+              
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

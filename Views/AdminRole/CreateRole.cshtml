@@ -1,0 +1,16 @@
+﻿@model CreateRoleViewModel
+
+@{
+    ViewData["Title"] = "CreateRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Rol</h1>
+
+<form method="post">
+    <label>Rol Adını Daxil Edin</label>
+    @Html.TextBoxFor(x=>x.RoleName, new {@class ="form-control"})
+    <br />
+    <button class="btn btn-primary">Rolu Əlavə Et</button>
+</form>
+

@@ -1,0 +1,24 @@
+﻿@using Elite.EntityLayer.Concreate;
+@model List<Category>
+
+<div class="col-sm-3 multi-gd-img">
+	<ul class="multi-column-dropdown">
+		<li><a href="/Product/IndexWoman/">Hamısı</a></li>
+		@foreach(var x in Model.Take(6))
+		{
+			<li><a href="/Product/GetProductsByCategoryIdWoman/@x.CategoryId">@x.CategoryName</a></li>
+
+		}
+	</ul>
+</div>
+<div class="col-sm-3 multi-gd-img">
+	<ul class="multi-column-dropdown">
+		@foreach (var x in Model.OrderByDescending(x=>x.CategoryId).Take(7))
+		{
+			<li><a href="/Product/GetProductsByCategoryIdWoman/@x.CategoryId">@x.CategoryName</a></li>
+
+		}
+	</ul>
+</div>
+
+

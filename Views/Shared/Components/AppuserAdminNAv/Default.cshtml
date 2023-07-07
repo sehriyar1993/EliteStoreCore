@@ -1,0 +1,15 @@
+﻿<div class="dropdown profile-element">
+    <img alt="image" class="rounded-circle" src="@ViewBag.ImageUrlAdmin" style="width:55px; height:55px;" />
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <span class="block m-t-xs font-bold">@ViewBag.name @ViewBag.Surname</span>
+        <span class="text-muted text-xs block">@ViewBag.EmailAdmin <b class="caret"></b></span>
+    </a>
+    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+        <li><a class="dropdown-item" href="/Profile/Index">Profilim</a></li>
+        <li><a class="dropdown-item" href="/Contact/Us">Əlaqə</a></li>
+        <li><a class="dropdown-item" href="/Contact/AdminNewsletter">Mesaj Qutusu</a></li>
+        <li class="dropdown-divider"></li>
+    </ul>
+</div>
+
+

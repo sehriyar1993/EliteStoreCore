@@ -1,0 +1,43 @@
+﻿@using Elite.EntityLayer.Concreate;
+@model List<AppRole>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Rol Siyahısı</h1>
+@if (Model.Count > 0)
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Rol Adı</th>
+            <th>Rolu Sil</th>
+            <th>Rolu Yenilə</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.Name</td>
+                <td><a href="/AdminRole/DeleteRole/@item.Id" class="btn btn-outline-danger"> Sil</a></td>
+                <td><a href="/AdminRole/UpdateRole/@item.Id" class="btn btn-outline-success">Yenilə</a></td>
+            </tr>
+        }
+
+    </table>
+}
+
+else
+{
+    <div class="alert alert-success">
+        <span> Rol Tapılmadı</span>
+    </div>
+}
+
+<a href="/AdminRole/CreateRole/" class="btn btn-outline-primary">Yeni Rol</a>
+<a href="/AdminRole/UserList/" class="btn btn-outline-primary">Rol Ver</a>
+

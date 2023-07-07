@@ -1,0 +1,42 @@
+﻿@using Elite.EntityLayer.Concreate;
+@model Category
+
+@{
+    ViewData["Title"] = "CateqoriyaAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-9">
+        <h2>Kateqoriya Əlavə Et</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">İdarəetmə</a>
+            </li>
+            <li class="breadcrumb-item">
+                Kateqoriyalar
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Kateqoriya Əlavə Et</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<br/>
+<br/>
+ <div class="ibox-content">
+	@using (Html.BeginForm("CateqoriyaAdd", "AdminCategory", FormMethod.Post))
+	{
+
+		<br />
+		<label for="validationCustom01">Başlıq</label>
+		@Html.TextBoxFor(x=>x.CategoryName, new {@class ="form-control"})
+		@Html.ValidationMessageFor(x=>x.CategoryName,"", new { @class = "text-danger"})
+        <br />
+        <br />
+		<button type="submit" id="btn1" class="btn btn-primary submit mb-4">Təsdiqlə</button>
+
+	}
+
+ </div>
+
+

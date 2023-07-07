@@ -1,0 +1,61 @@
+﻿@using Elite.EntityLayer.Concreate;
+@model About
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_EliteLayout.cshtml";
+}
+
+<div class="page-head_agile_info_w3l">
+	<div class="container">
+		<h3>Haqqımızda <span> </span></h3>
+		<!--/w3_short-->
+		<div class="services-breadcrumb">
+			<div class="agile_inner_breadcrumb">
+
+				<ul class="w3_short">
+					<li><a href="index.html">Ana Səhifə</a><i>|</i></li>
+					<li>Haqqımızda</li>
+				</ul>
+			</div>
+		</div>
+		<!--//w3_short-->
+	</div>
+</div>
+<!-- /banner_bottom_agile_info -->
+<div class="banner_bottom_agile_info">
+	<div class="container">
+		<div class="agile_ab_w3ls_info">
+			<div class="col-md-6 ab_pic_w3ls">
+				<img src="@Model.Image1" alt=" " class="img-responsive" />
+			</div>
+			<div class="col-md-6 ab_pic_w3ls_text_info">
+				<h5>@Model.Title <span> @Model.Title2</span> </h5>
+				<p>@Model.Description</p>
+				<p>@Model.Description2</p>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="banner_bottom_agile_info_inner_w3ls">
+			<div class="col-md-6 wthree_banner_bottom_grid_three_left1 grid">
+				<figure class="effect-roxy">
+					<img src="@Model.Image2" alt=" " class="img-responsive" />
+					<figcaption>
+						<h3><span>YENİ</span>KOLLEKSİYA</h3>
+						<p>ENDİRİMLƏR</p>
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col-md-6 wthree_banner_bottom_grid_three_left1 grid">
+				<figure class="effect-roxy">
+					<img src="@Model.Image3" alt=" " class="img-responsive" />
+					<figcaption>
+						<h3><span>YENİ</span>KOLLEKSİYA</h3>
+						<p>ENDİRİMLƏR</p>
+					</figcaption>
+				</figure>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+

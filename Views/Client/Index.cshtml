@@ -1,0 +1,74 @@
+﻿@using Elite.EntityLayer.Concreate;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc.Core.Common;
+@model IPagedList<AppUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="ibox-content">
+    <h2>İstifadəçilər</h2>
+
+    <form method="post"  class="input-group">
+@*        <form method="post">
+*@        <input type="text" placeholder="İstifadəçi axtar " class="input form-control" name="searchString" value="@ViewData["CurrentFilter"]">
+        <span class="input-group-append">
+            <button type="submit" class="btn btn btn-primary"> <i class="fa fa-search"></i> Axtar</button>
+        </span>
+@*        </form>
+*@    </form>
+    <div class="clients-list">
+
+        <div class="tab-content">
+            <div id="tab-1" class="tab-pane active">
+                <div class="full-height-scroll">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <tbody>
+                                @foreach (var x in Model)
+                                {
+                                    <tr>
+                                        <td class="client-avatar"><img alt="image" src="@x.ImageUrl" style="width:20px; height:20px;"> </td>
+                                        <td><a href="/Admin/Client/Detail/@x.Id" class="client-link">@x.Name  @x.Surname</a></td>
+                                        <td> @x.UserName</td>
+                                        <td class="contact-type"><i class="fa fa-envelope"> </i></td>
+                                        <td> @x.Email</td>
+                                        @if (x.About != null)
+                                        {
+                                            <td class="client-status"><span class="label label-primary">@x.About.Substring(0,Math.Min(x.About.Length,30))...</span></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="client-status"><span class="label label-primary">Məlumat yoxdur.</span></td>
+                                        }
+                                     
+                                        <td>
+                                            <a href="/Client/Delete/@x.Id" class="btn btn-outline-danger">Sil</a>
+
+                                        </td>
+                                    </tr>
+
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @Html.PagedListPager(Model,
+    page => Url.Action("Index", new { page }),
+    new PagedListRenderOptions {
+    DisplayLinkToIndividualPages = true,
+    DisplayPageCountAndCurrentLocation = false,
+    MaximumPageNumbersToDisplay = 10,
+    LiElementClasses = new string[] { "page-item" },
+    PageClasses = new string[] { "page-link" },
+    })
+</div>
+
+

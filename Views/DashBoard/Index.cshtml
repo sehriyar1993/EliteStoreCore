@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="wrapper wrapper-content">
+    <div class="row">
+
+        <div class="col-lg-4">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <span class="label label-primary float-right">Təsqiq Gözləyən</span>
+                    <h5>Sifarişlər</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">@ViewBag.g</h1>
+                    <div class="stat-percent font-bold text-navy"><i class="fa fa-level-up"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <span class="label label-info float-right">Təsdiqlənən</span>
+                    <h5>Sifarişlər</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">@ViewBag.t</h1>
+                    <div class="stat-percent font-bold text-info"> <i class="fa fa-level-up"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <span class="label label-warning float-right">Müddəti Bitmiş</span>
+                    <h5>Sifarişlər</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">@ViewBag.m</h1>
+                    <div class="stat-percent font-bold text-warning"><i class="fa fa-level-up"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        @await Component.InvokeAsync("LastOrder")
+
+        @await Component.InvokeAsync("LastContact")
+
+
+    </div>
+
+</div>
+
+

@@ -1,0 +1,58 @@
+﻿@using Elite.EntityLayer.Concreate;
+@using X.PagedList.Mvc.Core.Common;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core
+@model IPagedList<Contact>
+@{
+    ViewData["Title"] = "AdminContact";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        @foreach (var x in Model.OrderByDescending(x=>x.ContactID))
+        {
+            <div class="col-lg-3">
+                <div class="contact-box center-version">
+
+                    <a href="profile.html">
+
+                        <img alt="image" class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Google_Contacts_icon.svg/2048px-Google_Contacts_icon.svg.png">
+
+
+                        <h3 class="m-b-xs"><strong>@x.Name</strong></h3>
+                        <h3 class="m-b-xs"><strong>@x.Phone</strong></h3>
+
+                        <div class="font-bold">@x.Title</div>
+                        <address class="m-t-md">
+                            <strong>@x.Description </strong>@(((DateTime)x.Date).ToString("dd-MMM-yyyy"))<br>
+                            <abbr title="Email">Mail:@x.Mail</abbr> @x.Mail
+                        </address>
+
+                    </a>
+                    <div class="contact-box-footer">
+                        <div class="m-t-xs btn-group">
+                            <a href="" class="btn btn-xs btn-white"><i class="fa fa-phone"></i> Əlaqə </a>
+                            <a href="/Message/Add/" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i> Mail Yaz</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+    </div>
+    @Html.PagedListPager(Model,
+    page => Url.Action("Index", new { page }),
+    new PagedListRenderOptions {
+    DisplayLinkToIndividualPages = true,
+    DisplayPageCountAndCurrentLocation = false,
+    MaximumPageNumbersToDisplay = 10,
+    LiElementClasses = new string[] { "page-item" },
+    PageClasses = new string[] { "page-link" },
+    })
+</div>
+
+
+
+

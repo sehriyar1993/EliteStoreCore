@@ -1,0 +1,20 @@
+﻿@using Elite.EntityLayer.Concreate;
+@model List<NewsLetter>
+<div class="fh-column">
+    <div class="full-height-scroll">
+        <ul class="list-group elements-list">
+            @foreach (var x in Model)
+            {
+                <li class="list-group-item">
+                    <a class="nav-link active" data-toggle="tab" href="#tab-1">
+                        <small class="float-right text-muted"></small>
+                        <strong>@x.NewsLetterMail</strong>
+                        <div class="small m-t-xs">
+                        </div>
+                    </a>
+                </li>
+            }
+        </ul>
+
+    </div>
+</div>

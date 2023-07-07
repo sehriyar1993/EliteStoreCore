@@ -1,0 +1,9 @@
+﻿@using Elite.EntityLayer.Concreate;
+@model List<Product>
+<ul>
+	@foreach(var x in Model)
+	{
+		<li><a href="/Product/All/@x.ProductId"><img src="@x.ProductImage1" alt=" " class="img-responsive" /></a></li>
+
+	}
+</ul>

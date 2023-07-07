@@ -1,0 +1,45 @@
+﻿@using Elite.EntityLayer.Concreate;
+@model Category
+@{
+    ViewData["Title"] = "CateqoryUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-9">
+        <h2>Kateqoriya Yenilə</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">İdarəetmə</a>
+            </li>
+            <li class="breadcrumb-item">
+                Kateqoriyalar
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Kateqoriya Yenilə</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<br />
+<br />
+<div class="ibox-content">
+    @using (Html.BeginForm("CateqoryUpdate", "AdminCategory", FormMethod.Post))
+    {
+        @Html.HiddenFor(x=>x.CategoryId, new {@class ="form-control"})
+        @Html.HiddenFor(x=>x.Status, new {@class ="form-control"})
+
+        <br />
+        <label for="validationCustom01">Adı</label>
+        @Html.TextBoxFor(x=>x.CategoryName, new {@class ="form-control"})
+        @Html.ValidationMessageFor(x=>x.CategoryName,"", new { @class = "text-danger"})
+        <br />
+        <br />
+
+        <button type="submit" id="btn1" class="btn btn-primary submit mb-4">Yenilə</button>
+
+    }
+
+</div>
+
+

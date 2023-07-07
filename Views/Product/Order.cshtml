@@ -1,0 +1,127 @@
+﻿@using Elite.EntityLayer.Concreate;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Mvc.Core.Common;
+@model IPagedList<Order>
+@{
+    ViewData["Title"] = "Order";
+    Layout = "~/Views/Shared/_EliteLayout.cshtml";
+}
+
+
+<div class="banner-bootom-w3-agileits">
+
+	<div class="container">
+	@if (User.Identity.IsAuthenticated)
+		{
+			@foreach (var item in Model)
+			{
+				<div class="col-md-4 product-men">
+					<div class="men-pro-item simpleCart_shelfItem">
+
+						<div class="men-thumb-item">
+							<img src="@item.ProductImage1" alt="" class="pro-image-front" style="width:350px; height:280px;">
+							<img src="@item.ProductImage1" alt="" class="pro-image-back" style="width:350px; height:280px;">
+							<div class="men-cart-pro">
+								<div class="inner-men-cart-pro">
+									<a href="/Product/ProductSıngle/@item.ProductId" class="link-product-add-cart">Sürətli Bax</a>
+								</div>
+							</div>
+							<span class="product-new-top">@item.ProductGender, Ölçü:@item.ProductSize </span>
+
+						</div>
+						<div class="item-info-product ">
+							<h4><a href="/Product/ProductSıngle/@item.ProductId">@item.ProductName</a></h4>
+							<h5><a href="/Product/ProductSıngle/@item.ProductId">@item.Status</a></h5>
+							<div class="info-product-price">
+								<span class="item_price">@item.DiscountedPrice AZN</span>
+							</div>
+							<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+								<form action="/Product/OderDelete/@item.OrderId" method="get">
+									<fieldset>
+										@*<a href="/Product/OderDelete/@item.OrderId"  class="button">Sil</a>*@
+										<input type="submit" class="button"  value="Sil">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		}
+		else
+		{
+			<h1>Sifarişləri görmək üçün giriş edin</h1>
+		}
+		@Html.PagedListPager((IPagedList)Model, page => Url.Action("Order", new { page }),
+		new PagedListRenderOptions
+		{
+		LinkToFirstPageFormat="<<İlk",
+		LinkToLastPageFormat="Son>>",
+		LinkToNextPageFormat="sonraki>",
+		LinkToPreviousPageFormat="<əvvəli",
+		ContainerDivClasses=new[] {"navigation"},
+		LiElementClasses= new[] {"page-item"},
+		PageClasses=new[] {"page-link"},
+		ActiveLiElementClass="active"
+		})
+	</div>
+
+</div>
+<script type="text/javascript" src="~/web/js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<script src="~/web/js/responsiveslides.min.js"></script>
+<script>
+	// You can also use "$(window).load(function() {"
+	$(function () {
+		// Slideshow 4
+		$("#slider3").responsiveSlides({
+			auto: true,
+			pager: true,
+			nav: false,
+			speed: 500,
+			namespace: "callbacks",
+			before: function () {
+				$('.events').append("<li>before event fired.</li>");
+			},
+			after: function () {
+				$('.events').append("<li>after event fired.</li>");
+			}
+		});
+	});
+</script>
+<script src="~/web/js/modernizr.custom.js"></script>
+<!-- Custom-JavaScript-File-Links -->
+<!-- cart-js -->
+<script src="~/web/js/minicart.min.js"></script>
+<script>
+	// Mini Cart
+	paypal.minicart.render({
+		action: '#'
+	});
+
+	if (~window.location.search.indexOf('reset=true')) {
+		paypal.minicart.reset();
+	}
+</script>
+<script type='text/javascript'>
+	//<![CDATA[
+	$(window).load(function () {
+		$("#slider-range").slider({
+			range: true,
+			min: 0,
+			max: 9000,
+			values: [1000, 7000],
+			slide: function (event, ui) {
+				$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+			}
+		});
+		$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+
+	});//]]>
+
+</script>
+<script type="text/javascript" src="~/web/js/jquery-ui.js"></script>
+
+
+

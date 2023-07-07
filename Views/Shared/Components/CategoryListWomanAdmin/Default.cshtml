@@ -1,0 +1,11 @@
+﻿@using Elite.EntityLayer.Concreate;
+@model List<Category>
+
+@foreach (var x in Model)
+{
+
+	<li><a href="/AdminPruduct/GetProductsByCategoryIdWoman/@x.CategoryId">@x.CategoryName</a></li>
+
+
+}
+

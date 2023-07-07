@@ -1,0 +1,90 @@
+﻿@using Elite.EntityLayer.Concreate;
+@model IEnumerable<Product>
+
+
+@{
+    ViewData["Title"] = "GetProductsByCategoryIdWoman";
+    Layout = "~/Views/Shared/_EliteLayout.cshtml";
+}
+
+
+<div class="banner-bootom-w3-agileits">
+
+	<div class="container">
+		<div class="col-md-4 products-left">
+		
+			<div class="css-treeview">
+				<h4>KateqoriyaLar</h4>
+				@await Component.InvokeAsync("CategoryListWoman")
+			</div>
+	@*		<div class="community-poll">
+				<h4>Material</h4>
+				<div class="swit form">
+					<form method="post">
+						<div class="check_box"> <div class="radio"> <label><input type="radio" name="2"><i></i>Pambıq</label> </div></div>
+						<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Kətan</label> </div></div>
+						<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Paslanmaz Polad</label> </div></div>
+						<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Bioloji</label> </div></div>
+						<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Dəri</label> </div></div>
+						<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Sintetik</label> </div></div>
+						<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Elektronik</label> </div></div>
+						<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Qızıl</label> </div></div>
+						<input type="submit" value="Təsdiqlə">
+					</form>
+				</div>
+			</div>*@
+			<div class="clearfix"></div>
+		</div>
+		@foreach (var item in Model)
+		{
+			<div class="col-md-4 product-men">
+				<div class="men-pro-item simpleCart_shelfItem">
+
+					<div class="men-thumb-item">
+						<img src="@item.ProductImage1" alt="" class="pro-image-front" style="width:350px; height:280px;">
+						<img src="@item.ProductImage1" alt="" class="pro-image-back" style="width:350px; height:280px;">
+						<div class="men-cart-pro">
+							<div class="inner-men-cart-pro">
+								<a href="single.html" class="link-product-add-cart">Sürətli Bax</a>
+							</div>
+						</div>
+						<span class="product-new-top">@item.ProductGender, Ölçü:@item.ProductSize </span>
+
+					</div>
+					<div class="item-info-product ">
+						<h4><a href="/Product/ProductSıngle/@item.ProductId">@item.ProductName</a></h4>
+						<div class="info-product-price">
+							<span class="item_price">@item.DiscountedPrice AZN</span>
+							<del>@item.CellPrice AZN</del>
+						</div>
+						<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+							<form action="/Product/BuyProduct/" method="post">
+								<fieldset>
+									<input type="hidden" name="AppUserId" value="@ViewBag.userID">
+									<input type="hidden" name="ProductName" value="@item.ProductName">
+									<input type="hidden" name="ProductGender" value="@item.ProductGender ">
+									<input type="hidden" name="DiscountedPrice" value="@item.DiscountedPrice">
+									<input type="hidden" name="ProductSize" value="@item.ProductSize">
+									<input type="hidden" name="ProductId" value="@item.ProductId">
+									<input type="hidden" name="ProductImage1" value="@item.ProductImage1">
+									<input type="submit" class="button" value="Səbətə At">
+								</fieldset>
+							</form>
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+		}
+
+	</div>
+
+</div>
+
+
+
+
+
+
